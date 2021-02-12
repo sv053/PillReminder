@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.PillPage" Visual="Material" 
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             >
+    <ContentPage.Padding>
+        <OnPlatform 	x:TypeArguments="Thickness" 
+                        iOS="10, 20, 10, 0" 
+                        Android="10, 0" 
+                        WinPhone="10, 0" />
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10" x:Name="sl">
+            
+            <Entry Text="{Binding Name}" Placeholder="Название"/>
+            <Entry Text="{Binding Text}" Placeholder="Комментарий"/>
+
+            <FlexLayout AlignContent="SpaceBetween" Margin="10" HorizontalOptions="CenterAndExpand">
+                <StackLayout >
+                    <Label Text="ПН"/>
+                    <CheckBox Color="Aquamarine" IsChecked="{Binding Monday, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout >
+                    <Label Text="ВТ"/>
+                    <CheckBox Color="Aquamarine" IsChecked="{Binding Tuesday, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout >
+                    <Label Text="СР"/>
+                    <CheckBox Color="Aquamarine" IsChecked="{Binding Wednesday, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout >
+                    <Label Text="ЧТ"/>
+                    <CheckBox Color="Aquamarine" IsChecked="{Binding Thursday, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout >
+                    <Label Text="ПТ"/>
+                    <CheckBox Color="Aquamarine" IsChecked="{Binding Friday, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout >
+                    <Label Text="СБ"/>
+                    <CheckBox Color="Aquamarine" IsChecked="{Binding Saturday, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout >
+                    <Label Text="ВС"/>
+                    <CheckBox Color="Aquamarine" IsChecked="{Binding Sunday, Mode=TwoWay}"/>
+                </StackLayout>
+
+            </FlexLayout>
+
+            <FlexLayout AlignContent="SpaceEvenly" Margin="0,20,0,20">
+                <Label Text="Напомнить" Margin="10"/>
+                <CheckBox IsChecked="True" />
+                <TimePicker x:Name="remindTimeTp" Time="{Binding TimeToTakePill}"  />
+            </FlexLayout>
+            <FlexLayout AlignContent="SpaceEvenly" HorizontalOptions="CenterAndExpand" >
+                <Button Text="Сохранить" Clicked="SaveFriend" Margin="3"/>
+                <Button Text="Удалить" Clicked="DeleteFriend" Margin="3"/>
+                <Button Text="Отмена" Clicked="Cancel" Margin="3"/>
+            </FlexLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.PPage" Visual="Material" 
+             xmlns:converter="clr-namespace:PillReminder.ViewModels" 
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ColorConverter 	
+                    x:Key="colorConverter"    />        
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ContentPage.Padding>
+        <OnPlatform 	x:TypeArguments="Thickness" 
+                        iOS="10, 20, 10, 0" 
+                        Android="10, 0" 
+                        WinPhone="10, 0" />
+    </ContentPage.Padding>
+    
+    <ContentPage.Content>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+        <StackLayout  VerticalOptions="Start" Grid.Row="1">
+            <ListView x:Name="friendsList" ItemsSource="{Binding}" VerticalOptions="Start"
+                      ItemSelected="OnItemSelected"
+                       Margin="10" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <ViewCell.View>
+                                <Frame BorderColor="Aquamarine"
+                                       CornerRadius="15" 
+                                       Padding="0" 
+                                       Margin="5">
+                                <StackLayout   HorizontalOptions="Start"
+                                               Padding="10"  
+                                               BackgroundColor="Transparent">
+
+                                            <FlexLayout JustifyContent="SpaceBetween" Margin="5">
+                                                <Label Text="{Binding Name}" 
+                                                    FontSize="Title"
+                                                    FontAttributes="Bold"
+                                                    
+                                                       VerticalTextAlignment="Center"
+                                                       VerticalOptions="Center"
+                                                       WidthRequest="150"
+                                                       TextTransform="Uppercase"
+                                                       />
+                                                 <Button Text="X"  FontSize="14" 
+                                                                        FontAttributes="Bold"
+                                                                        CornerRadius="50"
+                                                                        TextColor="DarkSlateGray"
+                                                                        BackgroundColor="Gainsboro"
+                                                                       x:Name="removePillBtn"
+                                                                        Clicked="removePillBtn_Clicked" 
+                                                                        WidthRequest="40" HeightRequest="40"
+                                                         CommandParameter="{Binding .}"/>
+                                                
+                                              <!--  <CheckBox Color="DimGray" 
+                                                          IsChecked="True" 
+                                                          IsEnabled="False"/>   <Label x:Name="weekDaysLbl" TextColor="Lavender" Margin="5"/>
+                                                <CheckBox IsChecked="True" Color="Black"/>-->
+                                            </FlexLayout>
+                                            <FlexLayout AlignContent="SpaceBetween" HorizontalOptions="CenterAndExpand">
+                                             
+                                                <Label x:Name="monLbl" TextColor="{Binding Monday, Converter={StaticResource colorConverter}}" Text="ПН" Margin="5" />
+                                                <Label x:Name="tueLbl" TextColor="{Binding Tuesday, Converter={StaticResource colorConverter}}" Text="ВТ" Margin="5"/>
+                                                <Label x:Name="wedLbl" TextColor="{Binding Wednesday, Converter={StaticResource colorConverter}}" Text="СР" Margin="5"/>
+                                                <Label x:Name="thuLbl" TextColor="{Binding Thursday, Converter={StaticResource colorConverter}}" Text="ЧТ" Margin="5"/>
+                                                <Label x:Name="friLbl" TextColor="{Binding Friday, Converter={StaticResource colorConverter}}" Text="ПТ" Margin="5"/>
+                                                <Label x:Name="satLbl" TextColor="{Binding Saturday, Converter={StaticResource colorConverter}}" Text="СБ" Margin="5"/>
+                                                <Label x:Name="sunLbl" TextColor="{Binding Sunday, Converter={StaticResource colorConverter}}" Text="ВС" Margin="5"/>
+
+                                               
+                                            </FlexLayout>
+                                            <Label Text="{Binding TimeToTakePill}" Margin="5"/>
+                                            <!--  <FlexLayout AlignItems="Stretch"  JustifyContent="SpaceBetween" 
+                                                Margin="10"  > </FlexLayout>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                 <Label Text="{Binding Time}" />
+                                                <TimePicker/>
+                                               
+                                            </StackLayout>-->
+                                           
+
+                                        </StackLayout> 
+                            </Frame>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+          
+           <!-- -->
+        </StackLayout>
+        <Button HorizontalOptions="End" VerticalOptions="Start" 
+                    Margin="10" x:Name="addNewPillBtn"
+                    Text="+" FontAttributes="Bold" FontSize="Title"
+                    WidthRequest="50" HeightRequest="50" CornerRadius="50"
+                    BackgroundColor="LightSeaGreen" BorderColor="SeaGreen"
+                    Clicked="CreatePill"
+                     />
+           
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

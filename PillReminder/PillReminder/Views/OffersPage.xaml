@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.OffersPage"
+                 xmlns:local="clr-namespace:PillReminder.ViewModels" 
+                          xmlns:model="clr-namespace:PillReminder.Models"  
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             Title="Акции">
+
+       <ContentPage.Content>
+
+        <RefreshView x:DataType="local:OfferViewModel" Command="{Binding LoadOffersCommand}" 
+                     IsRefreshing="{Binding IsOffersBusy, Mode=TwoWay}">
+            <CollectionView x:Name="OffersListView"
+                ItemsSource="{Binding Offers}"
+                SelectionMode="Single" Margin="20,10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" x:DataType="model:Offer"  VerticalOptions="Start">
+                           
+                            <Label Text="{Binding PUBDATE}" 
+                            LineBreakMode="NoWrap" 
+                            FontSize="14" TextColor="DimGray" FontAttributes="Italic"/>
+                            <Label Text="{Binding TITLE}" 
+                            TextColor="DimGray"
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="{Binding DESCRIPTION}" 
+                            MaxLines="3"
+                            TextType="Html" TextColor="SlateGray"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="12" />
+                            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="LightGray" Margin="30,10,30,10"></BoxView>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="tgrOffer"
+                                NumberOfTapsRequired="1"
+                                    Tapped="tgrOffer_Tapped"    
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfferViewModel}}, Path=OfferTapped}"		
+                                CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

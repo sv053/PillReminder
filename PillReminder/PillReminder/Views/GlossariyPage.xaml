@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.GlossariyPage"
+             Title="Термины"
+             xmlns:local="clr-namespace:PillReminder.ViewModels"  
+             xmlns:model="clr-namespace:PillReminder.Models"  
+             x:Name="GlossariPage"
+             Visual="Material"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <FlexLayout  
+                    
+                    Direction="Column">
+        
+        <RefreshView x:DataType="local:GlossariyDetailViewModel" Command="{Binding LoadTermsCommand}" IsRefreshing="{Binding IsTermsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="TermsListView"
+                ItemsSource="{Binding Terms} "
+                SelectionMode="Single"
+                     Margin="10"    
+                            SelectedItem="{Binding Ter}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" Spacing="10"
+                                     x:DataType="model:Term">
+                            <StackLayout Orientation="Horizontal">
+                                    <BoxView BackgroundColor="LightBlue" 
+                                             WidthRequest="10" HeightRequest="10"
+                                             VerticalOptions="Center" CornerRadius="5"/>
+
+                                    <Label Text="{Binding TITLE}" 
+                           BackgroundColor="Transparent" Margin="10,0,0,0"
+                                   />
+                            </StackLayout>
+                            <!--<Button x:Name="loadBtn" 
+                                    x:DataType="local:GlossariyDetailViewModel"
+                                    Command="{Binding LoadTermsCommand}"
+                                    Text="Загрузить термины" 
+                                    Clicked="loadBtn_Clicked"  
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:GlossariyDetailViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}"/>-->
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    x:Name="termTgr"
+                                NumberOfTapsRequired="1"
+                               Tapped="termTgr_Tapped" 
+                                    CommandParameter="{Binding .}">
+                                </TapGestureRecognizer><!-- -->
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+           
+        </RefreshView>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

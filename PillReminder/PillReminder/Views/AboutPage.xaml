@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.AboutPage"
+             xmlns:vm="clr-namespace:PillReminder.ViewModels"
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             Visual="Material"
+             >
+    
+    <ContentPage.Padding>
+        <OnPlatform 	x:TypeArguments="Thickness" 
+                        iOS="10, 20, 10, 0" 
+                        Android="10, 0" 
+                        WinPhone="10, 0" /> 
+    </ContentPage.Padding>
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+   
+            <StackLayout Orientation="Vertical" Padding="30" >
+        <Label Text="Версия 1.1." Margin="15"
+                       FontSize="Subtitle"/>
+
+        <Label HorizontalOptions="Center"  LineBreakMode="WordWrap"
+                    Text="{Binding AppName}" 
+                        FontAttributes="Bold" LineHeight="2"
+                       HorizontalTextAlignment="Center"/>
+        <!--<Label HorizontalOptions="Center" 
+                    Text="" 
+                       FontSize="16" FontAttributes="Bold" 
+                       HorizontalTextAlignment="Center"/>
+        <Label HorizontalOptions="Center" 
+                    Text="" 
+                       FontSize="16" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+-->
+        <Label HorizontalOptions="Center" Margin="10"
+                    Text="Наш адрес: " 
+                       FontSize="18" 
+                       HorizontalTextAlignment="Center"/>
+                
+        <Label HorizontalOptions="Center" 
+                    Text="г. Челябинск, " 
+                       FontSize="18" 
+                       HorizontalTextAlignment="Center"/>
+        <Label HorizontalOptions="Center" 
+                    Text="ул. Пекинская, 7," 
+                       FontSize="18" 
+                       HorizontalTextAlignment="Center"/>
+        <Label HorizontalOptions="Center" 
+                    Text="ул. Шуменская, 16" 
+                       FontSize="18" 
+                       HorizontalTextAlignment="Center"/>
+        <Label HorizontalOptions="Center" Margin="10"
+                    Text="chelaids@mail.ru" 
+                       FontSize="18" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+
+        <Label HorizontalOptions="Center" Margin="10"
+                    Text="https://спидцентр.рф/" 
+                       FontSize="18" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" TextType="Html"/>
+        
+        <!--  <Label FontSize="Title" 
+                       Padding="0,10,0,0"
+                       Text="8(351) 214-99-01"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString >
+                            <FormattedString.Spans>
+                                <Span Text="Как с нами связаться:  " FontSize="Title" />
+                                <Span Text="....." FontSize="Title"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label x:Name="labelLoading" Text="Loading..." IsVisible="false"/>
+                <Frame CornerRadius="25" Padding="0" >
+                    <WebView Source="http://talon.zdrav74.ru"  
+                          HeightRequest="2300"
+                             VerticalOptions="Center" 
+                             />
+                </Frame>
+                <Button Margin="0,30,0,0" 
+                        Text="Записаться"
+                        WidthRequest="150"
+                        HorizontalOptions="Center"
+                        BackgroundColor="SeaGreen"
+                        Command="{Binding OpenWebCommand}"
+                        />
+               
+                <Entry Placeholder="gguyu"/>
+                <TimePicker WidthRequest="50" HeightRequest="50"/>-->
+            </StackLayout>
+       
+</ContentPage>

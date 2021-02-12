@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.SendQuestionPage"
+             Title=""
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             >
+    <ContentPage.Content>
+        <!--<Frame CornerRadius="15" Padding="0"  BackgroundColor="Gainsboro">-->
+        <StackLayout Margin="15">
+            <Label Text="Задать вопрос сотруднику центра: "
+                Margin="20" HorizontalTextAlignment="Center"/>
+                 <Entry Placeholder="Эл.адрес: " Margin="20" 
+                        x:Name="emailEntry"/>
+               <Editor Text="" Keyboard="Text" 
+                       x:Name="questionText"
+                       Placeholder="Напишите вопрос..." 
+                       HeightRequest="250" Margin="20"
+                       AutoSize="TextChanges"/>
+               <Button Text="Отправить" 
+                       x:Name="sendQuestion"
+                        HorizontalOptions="Center" 
+                    BackgroundColor="SlateGray"
+                    Margin="30"
+                    VerticalOptions="End"
+                    Clicked="sendQuestion_Clicked"  />
+            <Label x:Name="sendReslutLbl" />
+        </StackLayout>
+        <!--</Frame>-->
+    </ContentPage.Content>
+</ContentPage>

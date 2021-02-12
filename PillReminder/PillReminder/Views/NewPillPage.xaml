@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.NewPillPage"
+             Title="Добавить лекарство..."
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             >
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Default">
+            <Frame CornerRadius="25" Padding="0" Margin="10">
+        <StackLayout Padding="20" BackgroundColor="White" x:Name="sl">
+                    <Label x:Name="pillNamec" Text="{Binding Name}" />
+                    <Entry x:Name="pillName" Placeholder="укажите название"/>
+            <!--<Label Text="Единицы измерения:"/>
+                    <Picker ItemsSource="{Binding  Units}" HeightRequest="30">
+                        <Picker.Items >
+                            <x:String>таблетка</x:String>
+                            <x:String>микрограмм</x:String>
+                            <x:String>миллилитр</x:String>
+                            <x:String>капля</x:String>
+                            <x:String>суппозиторий</x:String>
+                            <x:String>капсула</x:String>
+                            <x:String>штука</x:String>
+                        </Picker.Items>
+                    </Picker>
+            <Label Text="Количество в день"/>
+                    <Picker SelectedIndex="0"  ItemsSource="{Binding TimesOfDay}">
+                        <Picker.Items>
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                        </Picker.Items>
+                    </Picker>-->
+           <!-- <Label Text="Дата начала приёма"/>
+            <DatePicker Date="{Binding StartDate, Mode=TwoWay}"/>
+            <Label Text="Дата окончания приёма"/>Time="{Binding Time}"
+                <DatePicker Date="{Binding StartDate, Mode=TwoWay}"/>
+            <Label Text="или указать количество дней"/>
+            <CheckBox IsChecked="True"/>-->
+                   
+                    <Label Text="Дни приёма: " />
+                    <FlexLayout AlignContent="SpaceBetween" Margin="10">
+                        <CheckBox x:Name="monChBox" Color="Aquamarine" IsChecked="{Binding Monday}"/>
+                        <CheckBox x:Name="tusChBox" Color="Aquamarine" IsChecked="{Binding Tuesday}"/>
+                        <CheckBox x:Name="wedChBox" Color="Aquamarine" IsChecked="{Binding Wednesday}"/>
+                        <CheckBox x:Name="thuChBox" Color="Aquamarine" IsChecked="{Binding Thursday}"/>
+                        <CheckBox x:Name="friChBox" Color="Aquamarine" IsChecked="{Binding Friday}"/>
+                        <CheckBox x:Name="satChBox" Color="Aquamarine" IsChecked="{Binding Saturday}"/>
+                        <CheckBox x:Name="sunChBox" Color="Aquamarine" IsChecked="{Binding Sunday}"/>
+
+                    </FlexLayout>
+                    <Label Text="Время приёма: " />
+
+                    <TimePicker x:Name="pillRemindTime" WidthRequest="100" Time="{Binding TimeToTakePill}"/>
+                    <StackLayout Orientation="Horizontal">
+                         <Label Text="Напомнить "/>
+                        <CheckBox x:Name="remindCheckBox" IsChecked="{Binding toRemind}"/>
+                        <Label x:Name="resMsg" Text="here" />
+                    </StackLayout>
+                   
+            <Button Text="Добавить " 
+                    
+                    Margin="30,30,30,0" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="SlateGray"
+                    Clicked="Button_Clicked"
+                    
+                    />
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Сохранить" Clicked="SaveFriend" />
+                        <Button Text="Удалить" Clicked="DeleteFriend" />
+                        <Button Text="Отмена" Clicked="Cancel" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

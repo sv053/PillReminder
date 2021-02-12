@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.NewsPage"
+              xmlns:local="clr-namespace:PillReminder.ViewModels"  
+             xmlns:model="clr-namespace:PillReminder.Models"  
+              Title="Новости"
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             >
+    <ContentPage.Content>
+        <RefreshView x:DataType="local:NewsViewModel" Command="{Binding LoadNewsCommand}" IsRefreshing="{Binding IsNewsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="NewsListView"
+                ItemsSource="{Binding News}"
+                SelectionMode="Single" Margin="20"
+                            SelectionChangedCommand="{Binding LoadNewsTappedCommand}"
+                            SelectionChangedCommandParameter="{Binding .}"
+                            SelectedItem="{Binding Mode=TwoWay, Path=aNews}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10,0" 
+                                     x:DataType="model:News"   >
+                            <!--<Label Text="{Binding Text}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />-->
+
+                            <Label LineBreakMode="CharacterWrap"
+                                   FontAttributes="Italic"
+                                    FontSize="14"
+                                   Text="{Binding PUBDATE}">
+                                
+                            </Label>
+
+                            <Label Text="{Binding TITLE}" 
+                                   FontAttributes="Bold" 
+                                   MaxLines="10"
+                                   FontSize="16" 
+                                   TextType="Html"></Label>
+                            <Label x:Name="lblTransf" 
+                                     Text="Просмотреть новость на сайте..." 
+                                     FontSize="Body" 
+                                     TextColor="CadetBlue"></Label>
+                            
+                            <BoxView HorizontalOptions="FillAndExpand" 
+                                     HeightRequest="1" 
+                                     Color="LightGray" 
+                                     Margin="30,10,30,10"></BoxView>
+                       
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="tgrNews"
+                                NumberOfTapsRequired="1"
+                                    Tapped="tgrNews_Tapped" 
+                                Command="{Binding  Source={RelativeSource AncestorType={x:Type local:NewsViewModel}}, Path=aNews}"		
+                                CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+
+                            </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.PillsDetailPage" 
+             Title="{Binding Title}"
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             Visual="Material" >
+
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Название:"  />
+        <Label x:Name="lblName" Text="{Binding Pill.Name, Mode=TwoWay}" />
+        <Label Text="Примечание:"  />
+        <Label x:Name="lblText" Text="{Binding Pill.Text, Mode=TwoWay}" />
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="mnBtn" Text="ПН" WidthRequest="50" HeightRequest="50" Clicked="mnBtn_Clicked" />
+            <Button x:Name="tuBtn" Text="ВТ" WidthRequest="50" HeightRequest="50" Clicked="tuBtn_Clicked" />
+            <Button x:Name="wedBtn" Text="СР" WidthRequest="50" HeightRequest="50" Clicked="wedBtn_Clicked" />
+            <Button x:Name="thuBtn" Text="ЧТ" WidthRequest="50" HeightRequest="50" Clicked="thuBtn_Clicked" />
+            <Button x:Name="frBtn" Text="ПТ" WidthRequest="50" HeightRequest="50" Clicked="frBtn_Clicked" />
+            <Button x:Name="satBtn" Text="СБ" WidthRequest="50" HeightRequest="50" Clicked="satBtn_Clicked" />
+
+            <Button x:Name="suBtn" Text="ВС" WidthRequest="50" HeightRequest="50" Clicked="suBtn_Clicked" />
+           
+        </StackLayout>
+       <!-- <Label x:Name="lblStart" Text="{Binding Id}" />
+            <Label Text="Длительность:" FontSize="Medium" />
+            <Label x:Name="lblEnd" Text="{Binding PillsTakingTerm}" FontSize="Small"/>
+          -->  <Label Text="Количество приёмов в день:" FontSize="Medium" />
+        <Picker SelectedIndex="0"  ItemsSource="{Binding TimesOfDay}">
+            <Picker.Items>
+                <x:String>1</x:String>
+                <x:String>2</x:String>
+                <x:String>3</x:String>
+                <x:String>4</x:String>
+                <x:String>5</x:String>
+            </Picker.Items>
+        </Picker>
+        <Label x:Name="lblTimes" Text="{Binding Pill.PillsTakingTerm}" FontSize="Small"/>
+            <Label Text="Время приёма:" FontSize="Medium" />
+        <TimePicker>
+            
+        </TimePicker>
+            <Label x:Name="lblPeriod" Text="{Binding Pill.PillsTakingTerm}" FontSize="Small"/>
+           
+        <Button Text="Сохранить" x:Name="saveBtn" Clicked="saveBtn_Clicked" WidthRequest="130" HorizontalOptions="Center"/>
+    </StackLayout>
+</ContentPage>

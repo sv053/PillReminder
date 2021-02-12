@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.MakeAppointmentPage"
+              xmlns:vm="clr-namespace:PillReminder.ViewModels"
+             BackgroundColor="{DynamicResource BackgroundColor}"
+              Visual="Material"    >
+    <ContentPage.Padding>
+        <OnPlatform 	x:TypeArguments="Thickness" 
+                        iOS="10, 20, 10, 0" 
+                        Android="0,20" 
+                        WinPhone="10, 0" />
+    </ContentPage.Padding>
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    <!--<ContentPage.ToolbarItems> Title="{Binding Title}"
+        <ToolbarItem Text="Заголовок страницы"
+                 IconImageSource="example_icon.png"
+                 Order="Primary"
+                 Priority="0" />
+    </ContentPage.ToolbarItems>-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Padding="0" Margin="0"> 
+        <ScrollView HorizontalScrollBarVisibility="Default" 
+                    VerticalScrollBarVisibility="Default" 
+                    Padding="0" Margin="0">
+       <!-- <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,10,0,10" VerticalOptions="FillAndExpand">
+                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+       
+            <StackLayout Orientation="Vertical" Padding="0" >-->
+                <!--<Label Text="Запись на приём" 
+                       FontSize="Title"
+                       HorizontalOptions="Center"/>
+                <Label HorizontalOptions="Center" 
+                    Text="Чтобы записаться на приём, приготовьте номер страхового полиса и паспортные данные" 
+                       FontSize="20" 
+                       HorizontalTextAlignment="Center"/>
+                <Label FontSize="18" 
+                       Padding="0,10,0,0"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Вы будете перенаправлены на сайт для продолжения записи. " FontAttributes="Bold"/>
+                                <Span Text="Для подтверждения перехода нажмите на кнопку ниже" FontAttributes="Bold"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label x:Name="labelLoading" Text="Loading..." IsVisible="false"/>
+                
+                <Button Margin="0,30,0,0" 
+                        Text="Записаться"
+                        WidthRequest="150"
+                        HorizontalOptions="Center"
+                        BackgroundColor="SeaGreen"
+                        Command="{Binding OpenWebCommand}"
+                        />-->
+                <Frame Padding="0" Margin="0">
+                <WebView Source="http://talon.zdrav74.ru" Margin="0"
+                          HeightRequest="2300" 
+                             VerticalOptions="Center" 
+                             />
+                </Frame>
+                <!--<Entry Placeholder="gguyu"/>
+                <TimePicker WidthRequest="50" HeightRequest="50"/>
+            </StackLayout>-->
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

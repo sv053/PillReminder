@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillReminder.Views.PillsPage"
+             xmlns:local="clr-namespace:PillReminder.ViewModels"  
+             xmlns:model="clr-namespace:PillReminder.Models"  
+             Title="{Binding Title}"
+             x:Name="BrowsePillsPage"
+             BackgroundColor="{DynamicResource BackgroundColor}"
+             Visual="Material"       >
+    <ContentPage.Padding>
+    <OnPlatform 	x:TypeArguments="Thickness" 
+                        iOS="10, 20, 10, 0" 
+                        Android="10, 0" 
+                        WinPhone="10, 0" />
+    </ContentPage.Padding>
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" IconImageSource="plus1.png" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems> 
+    <RefreshView x:DataType="local:PillsViewModel" Command="{Binding }" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        -->
+    <ContentPage.Content>
+        <Grid Margin="5">
+      
+           <ListView x:Name="PillsListView" 
+                    VerticalScrollBarVisibility="Default"
+                     ItemsSource="{Binding}"
+                Margin="5" 
+                SelectionMode="Single"
+                            >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                            <Frame CornerRadius="10" 
+                                   HasShadow="True"
+                                   VerticalOptions="Center"
+                                   Padding="0" Margin="0" 
+                                  BorderColor="LightGray"
+                                   >
+                        <StackLayout x:DataType="model:Pill" 
+                                     VerticalOptions="Center"
+                                     Margin="2" Padding="3"  >
+                            <Label Text="{Binding Name}" FontSize="Title" Margin="10"/>
+
+                                    <FlexLayout AlignContent="SpaceBetween" Margin="10">
+                                        <CheckBox Color="Aquamarine" />
+                                        <CheckBox Color="Aquamarine"/>
+                                        <CheckBox Color="Aquamarine"/>
+                                        <CheckBox Color="Aquamarine"/>
+                                        <CheckBox Color="Aquamarine"/>
+                                        <CheckBox Color="Aquamarine"/>
+                                        <CheckBox Color="Aquamarine"/>
+                                        <!--<Grid  BackgroundColor="LightGray" Margin="3" WidthRequest="40" HeightRequest="40">
+                                            <Label Text="ПН" FontSize="Small" FontAttributes="Bold"  HorizontalOptions="Center"  VerticalOptions="Center" />
+                                            
+                                        </Grid>
+                                        <Frame CornerRadius="8" Margin="3" WidthRequest="40" HeightRequest="40"
+                                               BackgroundColor="LightGray"    >
+                                            <Label Text="ВТ" FontSize="Small"   HorizontalOptions="Center"  VerticalOptions="Center" />
+                                        </Frame>
+                                        <Frame CornerRadius="8" Margin="3" WidthRequest="40" HeightRequest="40"
+                                               BackgroundColor="LightGray"    >
+                                            <Label Text="СР" FontSize="Small"   HorizontalOptions="Center"  VerticalOptions="Center" />
+                                        </Frame>
+                                        <Frame CornerRadius="8" WidthRequest="40" HeightRequest="40"
+                                               BackgroundColor="LightGray" Margin="3"   >
+                                            <Label Text="ЧТ" FontSize="Small"   HorizontalOptions="Center"  VerticalOptions="Center" />
+                                        </Frame>
+                                        <Frame CornerRadius="8" WidthRequest="40" HeightRequest="40"
+                                               BackgroundColor="LightGray" Margin="3"   >
+                                            <Label Text="ПТ" FontSize="Medium"   HorizontalOptions="Center"  VerticalOptions="Center" />
+                                        </Frame>
+                                        <Frame CornerRadius="8" WidthRequest="40" HeightRequest="40"
+                                               BackgroundColor="LightGray"  Margin="3"  >
+                                            <Label Text="СБ" FontSize="Medium"   HorizontalOptions="Center"  VerticalOptions="Center" />
+                                        </Frame>
+                                        <Frame CornerRadius="8" WidthRequest="40" HeightRequest="40"
+                                               BackgroundColor="LightGray" Margin="3"    >
+                                            <Label Text="ВС" FontSize="Medium"   HorizontalOptions="Center"  VerticalOptions="Center" />
+                                        </Frame>-->
+                                      
+                                    </FlexLayout>
+                                   
+                                    <!--
+                           
+                            <Label Text="{Binding Description}" 
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemDetailTextStyle}"     />-->
+                                    <FlexLayout AlignItems="Stretch"
+                                                JustifyContent="SpaceBetween" 
+                                                Margin="10"  > 
+                                        
+                                          <Button Text="X" Padding="0"
+                                                Margin="0" FontSize="14" 
+                                                FontAttributes="Bold"
+                                                CornerRadius="50"
+                                                TextColor="DarkSlateGray"
+                                                BackgroundColor="Gainsboro"
+                                               x:Name="removePillBtn"
+                                                Clicked="removePillBtn_Clicked"
+                                                WidthRequest="50" HeightRequest="50"/>
+                                       <TimePicker />
+                                       <!-- <Label Text="{Binding Source={RelativeSource AncestorType={x:Type local:PillsViewModel}}, Path=Te}"/>
+                                       
+                                         
+                                        <Button  Padding="0" 
+                                                Text="..."
+                                                Margin="0" FontSize="14" 
+                                                FontAttributes="Bold"
+                                                CornerRadius="50"
+                                                TextColor="DarkSlateGray"
+                                                BackgroundColor="Gainsboro"
+                                                x:Name="editPillBtn"
+                                              Command="{Binding Source={RelativeSource AncestorType={x:Type local:PillsViewModel}}, Path=PillTapped}"
+                                                CommandParameter="{Binding .}"
+                                                WidthRequest="50" HeightRequest="50"     />-->
+                                       
+                                    </FlexLayout>
+                          <!--  <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:PillsViewModel}}, Path=PillTapped}"		
+                                    CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>-->
+                        </StackLayout> 
+                            </Frame>
+                    </DataTemplate>
+                        
+                </ListView.ItemTemplate>
+            </ListView>
+           <Button HorizontalOptions="End" VerticalOptions="Start" 
+                    Margin="15" x:Name="addNewPillBtn"
+                    Text="+" FontAttributes="Bold" FontSize="Title"
+                    WidthRequest="50" HeightRequest="50" CornerRadius="50"
+                    BackgroundColor="LightSeaGreen" BorderColor="SeaGreen"
+                    Clicked="CreatePill"
+                     />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
